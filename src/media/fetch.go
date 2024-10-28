@@ -127,7 +127,7 @@ func downloadMedia(url string) (string, string, error) {
 
 	cmd := exec.Command("yt-dlp",
 		"--format", "bestvideo[vcodec=h264]+bestaudio[ext=m4a]/best[ext=mp4]",
-		"--cookiefile","/cookies/cookies.txt"
+		// "--cookiefile","/cookies/cookies.txt"
 		"--merge-output-format", "mp4",
 		"--restrict-filenames",
 		"--write-info-json",
