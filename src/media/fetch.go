@@ -159,7 +159,7 @@ func downloadMedia(url string, requestArgs map[string]string) (string, string, e
 		"--write-info-json":     "",
 		"--verbose":             "",
 		"--output":              name,
-		"--exec":				 "\"ffmpeg -i %(filepath)q -c:v libx264 -c:a aac -y %(filepath)q.tmp && mv %(filepath)q.tmp %(filepath)q\""
+		"--exec":				 "ffmpeg -i %(filepath)q -c:v libx264 -c:a aac -y %(filepath)q.tmp && mv %(filepath)q.tmp %(filepath)q",
 	}
 
 	args := make([]string, 0)
