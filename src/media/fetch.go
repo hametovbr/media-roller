@@ -194,6 +194,8 @@ func downloadMedia(url string, requestArgs map[string]string) (string, string, e
 
 	args = append(args, url)
 
+	log.Info().Msgf("Got input '%s' with args %v", url, args)
+
 	cmd := exec.Command("yt-dlp", args...)
 
 	var stdoutBuf, stderrBuf bytes.Buffer
