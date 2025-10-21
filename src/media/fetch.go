@@ -336,5 +336,38 @@ func getEnvVars() map[string]string {
 	if ev := strings.TrimSpace(os.Getenv("MR_PROXY")); ev != "" {
 		vars["--proxy"] = ev
 	}
+	
+    if ev := strings.TrimSpace(os.Getenv("MR_FORMAT")); ev != "" {
+        vars["--format"] = ev
+    }
+    
+    if ev := strings.TrimSpace(os.Getenv("MR_EXEC")); ev != "" {
+        vars["--exec"] = ev
+    }
+    
+    if ev := strings.TrimSpace(os.Getenv("MR_OUTPUT_TEMPLATE")); ev != "" {
+        vars["--output"] = ev
+    }
+    
+    if ev := strings.TrimSpace(os.Getenv("MR_MERGE_OUTPUT_FORMAT")); ev != "" {
+        vars["--merge-output-format"] = ev
+    }
+    
+    // Boolean flags (just check if they exist)
+    if os.Getenv("MR_WRITE_SUBS") != "" {
+        vars["--write-subs"] = ""
+    }
+    
+    if os.Getenv("MR_WRITE_THUMBNAIL") != "" {
+        vars["--write-thumbnail"] = ""
+    }
+    
+    if os.Getenv("MR_EXTRACT_AUDIO") != "" {
+        vars["--extract-audio"] = ""
+    }
+    
+    if ev := strings.TrimSpace(os.Getenv("MR_AUDIO_FORMAT")); ev != "" {
+        vars["--audio-format"] = ev
+    }
 	return vars
 }
