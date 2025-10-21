@@ -147,9 +147,7 @@ func downloadMedia(url string, requestArgs map[string]string) (string, string, e
 	id := GetMD5Hash(url, requestArgs)
 	name := getMediaDirectory(id) + "%(id)s.%(ext)s"
 
-	log.Info().Msgf("!!!!! Downloading %s to %s", url, name)
-
-	log.Info().Msgf("Got input '%s' with args %v", url, requestArgs)
+	log.Info().Msgf("Downloading %s to %s", url, name)
 
 	defaultArgs := map[string]string{
 		"--format":              "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
@@ -161,7 +159,6 @@ func downloadMedia(url string, requestArgs map[string]string) (string, string, e
 		"--write-info-json":     "",
 		"--verbose":             "",
 		"--output":              name,
-		"--exec":				 "ffmpeg -i %(filepath)q -c:v libx264 -c:a aac -y %(filepath)q.tmp && mv %(filepath)q.tmp %(filepath)q",
 	}
 
 	args := make([]string, 0)
@@ -195,8 +192,6 @@ func downloadMedia(url string, requestArgs map[string]string) (string, string, e
 	}
 
 	args = append(args, url)
-
-	log.Info().Msgf("Got input '%s' with args %v", url, args)
 
 	cmd := exec.Command("yt-dlp", args...)
 
