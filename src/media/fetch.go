@@ -369,5 +369,9 @@ func getEnvVars() map[string]string {
     if ev := strings.TrimSpace(os.Getenv("MR_AUDIO_FORMAT")); ev != "" {
         vars["--audio-format"] = ev
     }
+    
+    if ev := strings.TrimSpace(os.Getenv("MR_COOKIE")); ev != "" {
+        vars["--cookies"] = ev
+    }
 	return vars
 }
